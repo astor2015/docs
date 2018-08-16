@@ -50,3 +50,8 @@ do
      aws ec2 describe-instances --region $region
 done
 ```
+
+AWS CLI install
+```
+pip install awscli --upgrade --user
+```
