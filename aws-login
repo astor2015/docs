@@ -1,0 +1,33 @@
+#!/bin/bash
+profile_keys=(
+  'AWS_REGION'
+  'AWS_DEFAULT_REGION'
+  'AWS_ACCESS_KEY_ID'
+  'AWS_SECRET_ACCESS_KEY'
+  'AWS_SESSION_TOKEN'
+  'AWS_SECURITY_TOKEN'
+  'AWS_VAULT'
+)
+variables=()
+
+_usage()
+{
+  cat <<\USAGE
+Usage: aws-login <profile>
+USAGE
+}
+
+if [ -z "$1" ]; then
+  # display usage and exit when no args
+  _usage
+  exit 1
+fi
+
+for i in ${profile_keys[@]}; do
+  unset ${i}
+done
+aws-vault exec "$1"
+readarray variables < <`env | grep AWS | grep -v 'AWS_VAULT'`
+for i in ${variables[@]}; do
+  export ${i}
+done
