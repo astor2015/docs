@@ -55,3 +55,13 @@ AWS CLI install
 ```
 pip install awscli --upgrade --user
 ```
+Terragrunt 
+```
+wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.16.7/terragrunt_linux_amd64
+cp terragrunt_linux_amd64 .local/bin/terragrunt
+chmod +x .local/bin/terragrunt
+$ terragrunt
+DESCRIPTION:
+   terragrunt - Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple
+   Terraform modules, remote state, and locking. For documentation, see https://github.com/gruntwork-io/terragrunt/.
+```
