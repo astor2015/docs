@@ -38,3 +38,15 @@ mfa_serial=arn:aws:iam::<id>:mfa/<user>
 aws_access_key_id = AFSAFKNAHSFQRRQW
 aws_secret_access_key = wOASGGSIGNJIWEQGQL
 ```
+
+
+AWS check
+```
+AWS  CLI - No there is no way to set multiple regions in one setting. You could do something like this
+
+for region in `aws ec2 describe-regions --output text | cut -f3`
+do
+     echo -e "\nListing Instances in region:'$region'..."
+     aws ec2 describe-instances --region $region
+done
+```
